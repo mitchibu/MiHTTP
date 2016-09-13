@@ -51,31 +51,31 @@ public class MiHTTP<E> implements Callable<E> {
 		this.url = url;
 	}
 
-	public MiHTTP method(Method method) {
+	public MiHTTP<E> method(Method method) {
 		if(method == null) throw new IllegalArgumentException();
 		this.method = method;
 		return this;
 	}
 
-	public MiHTTP maxRedirects(int maxRedirects) {
+	public MiHTTP<E> maxRedirects(int maxRedirects) {
 		if(maxRedirects < 0 || maxRedirects == Integer.MAX_VALUE) throw new IllegalArgumentException();
 		this.maxRedirects = maxRedirects;
 		return this;
 	}
 
-	public MiHTTP connectTimeout(int connectTimeout) {
+	public MiHTTP<E> connectTimeout(int connectTimeout) {
 		if(connectTimeout < 0) throw new IllegalArgumentException();
 		this.connectTimeout = connectTimeout;
 		return this;
 	}
 
-	public MiHTTP readTimeout(int readTimeout) {
+	public MiHTTP<E> readTimeout(int readTimeout) {
 		if(readTimeout < 0) throw new IllegalArgumentException();
 		this.readTimeout = readTimeout;
 		return this;
 	}
 
-	public MiHTTP addHeader(String name, String value) {
+	public MiHTTP<E> addHeader(String name, String value) {
 		if(name == null || value == null) throw new IllegalArgumentException();
 		if(headers == null) headers = new TreeMap<>();
 		List<String> entries = headers.get(name);
@@ -87,28 +87,28 @@ public class MiHTTP<E> implements Callable<E> {
 		return this;
 	}
 
-	public MiHTTP sender(Sender sender) {
+	public MiHTTP<E> sender(Sender sender) {
 		this.sender = sender;
 		return this;
 	}
 
-	public MiHTTP receiver(Receiver<E> receiver) {
+	public MiHTTP<E> receiver(Receiver<E> receiver) {
 		this.receiver = receiver;
 		return this;
 	}
 
-	public MiHTTP processor(Processor<E> processor) {
+	public MiHTTP<E> processor(Processor<E> processor) {
 		if(processor == null) throw new IllegalArgumentException();
 		this.processor = processor;
 		return this;
 	}
 
-	public MiHTTP verifier(HostnameVerifier verifier) {
+	public MiHTTP<E> verifier(HostnameVerifier verifier) {
 		this.verifier = verifier;
 		return this;
 	}
 
-	public MiHTTP factory(SSLSocketFactory factory) {
+	public MiHTTP<E> factory(SSLSocketFactory factory) {
 		this.factory = factory;
 		return this;
 	}
